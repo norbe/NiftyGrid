@@ -1,0 +1,11 @@
+{
+	"name": "niftygrid/niftygrid",
+	"config": {
+		"vendor-dir": "libs"
+	},
+	"minimum-stability": "dev",
+	"require": {
+		"php": ">=5.3.2",
+		"nette/nette": "dev-master"
+	}
+}
