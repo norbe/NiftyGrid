@@ -78,6 +78,9 @@ class Grid extends \Nette\Application\UI\Control
 	/** @var string */
 	public $messageNoRecords = 'Žádné záznamy';
 
+	public function __construct() {
+		parent::__construct();
+	}
 	/**
 	 * @param \Nette\Application\UI\Presenter $presenter
 	 */
