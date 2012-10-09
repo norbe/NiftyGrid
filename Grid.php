@@ -78,21 +78,18 @@ class Grid extends \Nette\Application\UI\Control
 	/** @var string */
 	public $messageNoRecords = 'Žádné záznamy';
 
-	public function __construct() {
-		parent::__construct();
-		$this->addComponent(New \Nette\ComponentModel\Container(), "columns");
-		$this->addComponent(New \Nette\ComponentModel\Container(), "buttons");
-		$this->addComponent(New \Nette\ComponentModel\Container(), "globalButtons");
-		$this->addComponent(New \Nette\ComponentModel\Container(), "actions");
-		$this->addComponent(New \Nette\ComponentModel\Container(), "subGrids");
-	}
-	
 	/**
 	 * @param \Nette\Application\UI\Presenter $presenter
 	 */
 	protected function attached($presenter)
 	{
 		parent::attached($presenter);
+
+		$this->addComponent(New \Nette\ComponentModel\Container(), "columns");
+		$this->addComponent(New \Nette\ComponentModel\Container(), "buttons");
+		$this->addComponent(New \Nette\ComponentModel\Container(), "globalButtons");
+		$this->addComponent(New \Nette\ComponentModel\Container(), "actions");
+		$this->addComponent(New \Nette\ComponentModel\Container(), "subGrids");
 
 		if($presenter->isAjax()){
 			$this->invalidateControl();
@@ -218,7 +215,7 @@ class Grid extends \Nette\Application\UI\Control
 	 * @throws DuplicateColumnException
 	 * @return \Nifty\Grid\Column
 	 */
-	public function addColumn($name, $label = NULL, $width = NULL, $truncate = NULL)
+	protected function addColumn($name, $label = NULL, $width = NULL, $truncate = NULL)
 	{
 		if(!empty($this['columns']->components[$name])){
 			throw new DuplicateColumnException("Column $name already exists.");
@@ -239,7 +236,7 @@ class Grid extends \Nette\Application\UI\Control
 	 * @return Button
 	 * @throws DuplicateButtonException
 	 */
-	public function addButton($name, $label = NULL)
+	protected function addButton($name, $label = NULL)
 	{
 		if(!empty($this['buttons']->components[$name])){
 			throw new DuplicateButtonException("Button $name already exists.");
@@ -356,7 +353,7 @@ class Grid extends \Nette\Application\UI\Control
 	/**
 	 * @param IDataSource $dataSource
 	 */
-	public function setDataSource(IDataSource $dataSource)
+	protected function setDataSource(IDataSource $dataSource)
 	{
 		$this->dataSource = $dataSource;
 		$this->primaryKey = $this->dataSource->getPrimaryKey();
