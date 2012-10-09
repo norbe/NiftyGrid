@@ -55,7 +55,7 @@ class Button extends \Nette\Application\UI\PresenterComponent
 	 */
 	private function getLabel($row)
 	{
-		if(is_callable($this->label)){
+		if(!is_string($this->label) && is_callable($this->label)){
 			return call_user_func($this->label, $row);
 		}
 		return $this->label;
@@ -78,7 +78,7 @@ class Button extends \Nette\Application\UI\PresenterComponent
 	 */
 	private function getLink($row)
 	{
-		if(is_callable($this->link)){
+		if(!is_string($this->link) && is_callable($this->link)){
 			return call_user_func($this->link, $row);
 		}
 		return $this->link;
@@ -101,7 +101,7 @@ class Button extends \Nette\Application\UI\PresenterComponent
 	 */
 	private function getText($row)
 	{
-		if(is_callable($this->text)){
+		if(!is_string($this->text) && is_callable($this->text)){
 			return call_user_func($this->text, $row);
 		}
 		return $this->text;
@@ -124,7 +124,7 @@ class Button extends \Nette\Application\UI\PresenterComponent
 	 */
 	private function getTarget($row)
 	{
-		if(is_callable($this->target)){
+		if(!is_string($this->target) && is_callable($this->target)){
 			return call_user_func($this->target, $row);
 		}
 		return $this->target;
@@ -147,7 +147,7 @@ class Button extends \Nette\Application\UI\PresenterComponent
 	 */
 	private function getClass($row)
 	{
-		if(is_callable($this->class)){
+		if(!is_string($this->class) && is_callable($this->class)){
 			return call_user_func($this->class, $row);
 		}
 		return $this->class;
@@ -181,7 +181,7 @@ class Button extends \Nette\Application\UI\PresenterComponent
 	 */
 	public function getConfirmationDialog($row)
 	{
-		if(is_callable($this->dialog)){
+		if(!is_string($this->dialog) && is_callable($this->dialog)){
 			return call_user_func($this->dialog, $row);
 		}
 		return $this->dialog;
@@ -212,7 +212,7 @@ class Button extends \Nette\Application\UI\PresenterComponent
 	 */
 	public function getShow($row)
 	{
-		if(is_callable($this->show)){
+		if(!is_string($this->show) && is_callable($this->show)){
 			return (boolean) call_user_func($this->show, $row);
 		}
 		return $this->show;
